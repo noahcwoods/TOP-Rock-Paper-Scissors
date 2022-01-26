@@ -21,25 +21,25 @@ function randomNumber(min,max){
 
 function playGame(playerSelection, compSelection){
     if (playerSelection.toLowerCase() === compSelection) {
-        return "Tie";
+        return 3;
     }
     if (playerSelection.toLowerCase() === "rock") {
         if (compSelection === "paper") {
-            return "You Lose";
+            return 0;
         }else{
-            return "You Win";
+            return 1;
         }
     }else if (playerSelection.toLowerCase() === "paper"){
         if (compSelection === "scissors") {
-            return "You Lose";
+            return 0;
         }else{
-            return "You Win";
+            return 1;
         }
     }else{
         if (compSelection === "rock"){
-            return "You Lose";
+            return 0;
         }else{
-            return "You Win";
+            return 1;
         }
     }
 }
@@ -47,13 +47,23 @@ function playGame(playerSelection, compSelection){
 function game(){
     let playerScore = 0;
     let compScore = 0;
-    for (let i = 0; i <= 4; i++) {
+    for (let i = 0; i <= 4;) {
         compSelection = (computerPlay());
-        console.log(compSelection);
-        
-        
-
+        let roundResult = playGame(playerSelection, compSelection);
+        if (roundResult === 1) {
+            playerScore += 1;
+            i++;
+            if (playerScore === 3) {
+                console.log("player Wins");
+            }
+        }else if(roundResult === 0){
+            compScore += 1;
+            i++;
+            if (compScore === 3) {
+                console.log("Computer Wins");
+            }
+        }
     }
 }
 
-console.log(game());
+game();
