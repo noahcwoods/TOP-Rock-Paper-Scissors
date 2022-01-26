@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+}
+body{
+    background-image: url(./img/background.jpg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.button-container{
+    display: flex;
+}
+
+.button-container button{
+    margin: 5%;
+    flex: 1;
+    padding: 0;
+    border-radius: 20%;
+}
+
+.button-container button img{
+    width: 100%;
+    height: auto;
+    border-radius: 20%;
+
+}
+.result{
+    color: #000000;
+    font-size: 100%;
+}
