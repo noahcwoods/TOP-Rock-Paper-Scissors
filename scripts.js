@@ -1,5 +1,5 @@
-const playerSelection = "paper";
-let compSelection = computerPlay();
+let playerSelection;
+let compSelection;
 
 function computerPlay() {
     switch (randomNumber(1,4)) {
@@ -35,6 +35,8 @@ function playGame(playerSelection, compSelection){
         }else{
             return 1;
         }
+    }else if (playerSelection.toLowerCase() != "scissors"){
+        return 4;
     }else{
         if (compSelection === "rock"){
             return 0;
@@ -49,19 +51,26 @@ function game(){
     let compScore = 0;
     for (let i = 0; i <= 4;) {
         compSelection = (computerPlay());
+        playerSelection = window.prompt("please enter rock, paper, or scissors");
         let roundResult = playGame(playerSelection, compSelection);
         if (roundResult === 1) {
             playerScore += 1;
             i++;
+            window.alert(`You scored, current score is You: ${playerScore} computer: ${compScore}`);
             if (playerScore === 3) {
                 console.log("player Wins");
             }
         }else if(roundResult === 0){
             compScore += 1;
+            window.alert(`Computer scored, current score is You: ${playerScore} computer: ${compScore}`);
             i++;
             if (compScore === 3) {
                 console.log("Computer Wins");
             }
+        }else if (roundResult === 3){
+            window.alert("Tie, try again!");
+        }else{
+            window.alert("Invalid entry, try again");
         }
     }
 }
